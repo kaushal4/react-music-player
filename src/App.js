@@ -20,6 +20,9 @@ function App() {
   const songTimeUpdateHandler = (e) => {
     const current = e.target.currentTime;
     const duration = e.target.duration;
+    if(current===duration){
+      skipSongHandler("skip-forward");
+    }
     setSongInfo({ ...songInfo, currentTime: current, totalTime: duration });
   };
 
