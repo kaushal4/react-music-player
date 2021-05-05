@@ -64,7 +64,7 @@ function chillHop() {
     {
       name: "Soul Samba",
       cover:
-        "https://chillhop.com/wp-content/uploads/2020/09/0255e8b8c74c90d4a27c594b3452b2daafae608d-1024x1024.jpg",
+        "https://chillhop.com/wp-content/uploads/2021/02/d12927eedcc2f5afba2ab049a4a1ea46c2266ae3-1024x1024.jpg",
       artist: "Screen Jazzmaster,Zmeyev",
       audio: "https://mp3.chillhop.com/serve.php/?mp3=16061",
       color: ["#5C6475", "#6F4078"],

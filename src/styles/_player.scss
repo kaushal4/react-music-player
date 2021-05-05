@@ -1,3 +1,8 @@
+@mixin nAppearance {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
 .player {
   min-height: 20vh;
   display: flex;
@@ -7,10 +12,41 @@
   .time-control {
     width: 50%;
     display: flex;
-    input {
+    .track {
+      z-index: 1;
+      margin: 1em 0;
+      position: relative;
+      border-radius: 1rem;
+      background-color: blue;
+      overflow: hidden;
+      .animate-track {
+        pointer-events: none;
+        background-color: rgb(145, 177, 166);
+        width: 100%;
+        height: 1rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translateX(50%);
+      }
       width: 100%;
-      padding: 1rem 0;
+      height: 1em;
+      input {
+        width: 100%;
+        @include nAppearance();
+        background: transparent;
+        cursor: pointer;
+        &:focus {
+          outline: none;
+        }
+        &::-webkit-slider-thumb {
+          @include nAppearance();
+          width: 20px;
+          height: 20px;
+        }
+      }
     }
+
     p {
       padding: 1rem;
     }
@@ -23,6 +59,21 @@
     padding: 1rem;
     svg {
       cursor: pointer;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .player {
+    .time-control {
+      width: 90%;
+    }
+  }
+}
+@media screen and (max-width: 900px) {
+  .player {
+    .time-control {
+      width: 70%;
     }
   }
 }

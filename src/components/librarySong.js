@@ -1,14 +1,6 @@
 import React from "react";
 
-const LibrarySong = ({
-  Song,
-  setCurrentSong,
-  currentSong,
-  songs,
-  audioRef,
-  playing,
-  setSongs,
-}) => {
+const LibrarySong = ({ Song, setCurrentSong, currentSong }) => {
   const songSelectHandler = async () => {
     setCurrentSong(Song);
     //add active state

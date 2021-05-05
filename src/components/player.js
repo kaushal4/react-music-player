@@ -13,6 +13,7 @@ const Song = ({
   songInfo,
   setSongInfo,
   skipSongHandler,
+  currentSong
 }) => {
   const formatTime = (time) => {
     return (
@@ -35,11 +36,16 @@ const Song = ({
     audioRef.current.currentTime = e.target.value;
     setSongInfo({ ...songInfo, currentTime: e.target.value });
   };
-
+  const trackAnim = {
+    transform: `translateX(${songInfo.animationPrecentage}%)`,
+  }
   return (
     <div className="player">
       <div className="time-control">
         <p>{formatTime(songInfo.currentTime)}</p>
+        <div className="track" style={{
+            background: `linear-gradient(to right, ${currentSong.color[0]},${currentSong.color[1]})`,
+          }}>
         <input
           type="range"
           min="0"
@@ -52,6 +58,9 @@ const Song = ({
             dragHandler(e);
           }}
         />
+        <div className="animate-track" style={trackAnim}></div>
+        </div>
+        
         <p>{formatTime(songInfo.totalTime || 0)}</p>
       </div>
       <div className="play-control">

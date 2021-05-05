@@ -20,10 +20,6 @@ const Library = ({
               setCurrentSong={setCurrentSong}
               Song={element}
               key={index}
-              audioRef={audioRef}
-              playing={playing}
-              setSongs={setSongs}
-              songs={songs}
               currentSong={currentSong}
             />
           );

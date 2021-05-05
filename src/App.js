@@ -15,6 +15,7 @@ function App() {
   const [songInfo, setSongInfo] = useState({
     currentTime: 0,
     totalTime: 0,
+    animationPrecentage:0
   });
   const [libStatus,setLibStatus] = useState(false);
   const songTimeUpdateHandler = (e) => {
@@ -23,7 +24,7 @@ function App() {
     if(current===duration){
       skipSongHandler("skip-forward");
     }
-    setSongInfo({ ...songInfo, currentTime: current, totalTime: duration });
+    setSongInfo({ ...songInfo, currentTime: current, totalTime: duration ,animationPrecentage : Math.round((Math.round(current)/Math.round(duration) * 100)) });
   };
 
   const skipSongHandler = (direction)=>{
@@ -49,10 +50,10 @@ function App() {
   },[currentSong,playing]);
 
   return (
-    <div>
+    <div className={`App ${libStatus?"library-active":""}`}>
       <Nav libStatus={libStatus} setLibStatus={setLibStatus}/>
       <Songs currentSong={currentSong}/>
-      <Player  setPlaying={setPlaying}  playing={playing} audioRef={audioRef} songInfo={songInfo} setSongInfo={setSongInfo} skipSongHandler={skipSongHandler}/>
+      <Player  setPlaying={setPlaying}  playing={playing} audioRef={audioRef} songInfo={songInfo} setSongInfo={setSongInfo} skipSongHandler={skipSongHandler} currentSong={currentSong}/>
       <Library  songs={songs} setCurrentSong={setCurrentSong} playing={playing} currentSong={currentSong} libStatus={libStatus}/>
       <audio
         onLoadedMetadata={(e) => {
